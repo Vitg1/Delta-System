@@ -1,0 +1,11 @@
+class AutoListener extends Component {
+   /* @Author Sr Mil Games */ //[I-S]LN=0;[I-E]
+   static boolean firstFrame = true; //[I-S]LN=1;[I-E]
+   void repeat(){ //[I-S]LN=2;[I-E]
+       if (firstFrame){ //[I-S]LN=3;[I-E]
+           firstFrame = false; //[I-S]LN=4;[I-E]
+           DeltaAutoRunner.onAfterCompile(); //[I-S]LN=5;[I-E]
+       } //[I-S]LN=6;[I-E]
+    //[I-S]LN=7;[I-E]
+   } //[I-S]LN=8;[I-E]
+}

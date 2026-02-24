@@ -1,0 +1,69 @@
+package JAVARuntime;
+
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.*;
+import java.util.concurrent.locks.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import java.util.zip.*;
+import java.text.*;
+import java.net.*;
+import java.math.*;
+import java.io.*;
+import java.nio.*;
+import java.time.*;
+import java.time.chrono.*;
+import java.time.format.*;
+import java.time.temporal.*;
+import java.time.zone.*;
+
+
+
+public class _JContainer{}
+
+//C-R:BackupMenu
+/* @Author Unknown user */ //[I-S]LN=0;[I-E]
+class BackupMenu extends FilesPanelFileMenu { //[I-S]LN=1;[I-E]
+ //[I-S]LN=2;[I-E]
+    public BackupMenu() {   //[I-S]LN=3;[I-E]
+        super("Do Backup");   //[I-S]LN=4;[I-E]
+    }   //[I-S]LN=5;[I-E]
+ //[I-S]LN=6;[I-E]
+    @Override //[I-S]LN=7;[I-E]
+    public void onClick(File file){   //[I-S]LN=8;[I-E]
+        if (file == null || !file.exists()) return; //[I-S]LN=9;[I-E]
+ //[I-S]LN=10;[I-E]
+        // Checa se é realmente um .bak //[I-S]LN=11;[I-E]
+        if (!file.getName().endsWith(".bak")) return; //[I-S]LN=12;[I-E]
+ //[I-S]LN=13;[I-E]
+        try { //[I-S]LN=14;[I-E]
+            // Determina o arquivo original //[I-S]LN=15;[I-E]
+            String originalPath = file.getAbsolutePath().substring(0, file.getAbsolutePath().length() - 4); //[I-S]LN=16;[I-E]
+            File original = new File(originalPath); //[I-S]LN=17;[I-E]
+ //[I-S]LN=18;[I-E]
+            // Confirma sobrescrita (pode substituir com diálogo na UI) //[I-S]LN=19;[I-E]
+            if (original.exists()) { //[I-S]LN=20;[I-E]
+                // Aqui você pode colocar um diálogo de confirmação, exemplo: //[I-S]LN=21;[I-E]
+                // boolean ok = showConfirm("Deseja restaurar o backup e sobrescrever " + original.getName() + "?"); //[I-S]LN=22;[I-E]
+                // if (!ok) return; //[I-S]LN=23;[I-E]
+ //[I-S]LN=24;[I-E]
+                Toast.showText("Restaurando backup: \n" + file.getName() + " → " + original.getName(),2); //[I-S]LN=25;[I-E]
+            } //[I-S]LN=26;[I-E]
+ //[I-S]LN=27;[I-E]
+            // Copia o .bak para o arquivo original, sobrescrevendo //[I-S]LN=28;[I-E]
+            java.nio.file.Files.copy(file.toPath(), original.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING); //[I-S]LN=29;[I-E]
+ //[I-S]LN=30;[I-E]
+            Toast.showText("Backup restaurado com sucesso!",2); //[I-S]LN=31;[I-E]
+ //[I-S]LN=32;[I-E]
+        } catch (Exception e) { //[I-S]LN=33;[I-E]
+            Terminal.log(e); //[I-S]LN=34;[I-E]
+        } //[I-S]LN=35;[I-E]
+    }   //[I-S]LN=36;[I-E]
+ //[I-S]LN=37;[I-E]
+    @Override //[I-S]LN=38;[I-E]
+    public boolean filterFormat(String format){   //[I-S]LN=39;[I-E]
+        return format.endsWith(".bak");   //[I-S]LN=40;[I-E]
+    }   //[I-S]LN=41;[I-E]
+} //[I-S]LN=42;[I-E]
