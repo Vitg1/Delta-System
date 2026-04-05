@@ -1,7 +1,7 @@
 /* @Author Sr Mil Games */
 public class DeltaRunner{
     public static void run(DeltaConfig config){
-        File root = new File(Directories.getProjectFolder() + "/Files/");
+        File root = new File(Directories.getProjectFolder() + "/");
         applyRecursive(root, config);
     }
 
@@ -27,4 +27,3 @@ public class DeltaRunner{
 
     }
 }
-

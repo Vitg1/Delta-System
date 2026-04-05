@@ -7,7 +7,7 @@ public class DeltaBakSetIcon extends FilesPanelCustomIcon {
 
     @Override
     public File getIconForFile(File file){
-        File root = new File(Directories.getProjectFolder()+"/Files/"); // ponto inicial da busca
+        File root = new File(Directories.getProjectFolder()+"/DeltaSys/"); // ponto inicial da busca
         File icon = findIcon(root);
         if (icon != null && icon.exists()){
             return icon;
