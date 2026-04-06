@@ -16,9 +16,11 @@ public class DeltaApply {
     if (target.startsWith("\"") && target.endsWith("\"")) {
       target = target.substring(1, target.length() - 1);
     }
+    String base;
+    
+    base = new File(Directories.getProjectFolder() + "/Files/").getAbsolutePath().replace("\\", "/");
 
-    String base = new File(Directories.getProjectFolder() + "/Files/").getAbsolutePath().replace("\\", "/");
-    String path = file.getAbsolutePath().replace("\\", "/");
+   String path = file.getAbsolutePath().replace("\\", "/");
     String relative = path.replace(base, "");
     if (relative.startsWith("/")) {
       relative = relative.substring(1);

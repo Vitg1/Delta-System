@@ -12,7 +12,7 @@ public class DeltaAutoRunner{
     }
 
     static void runAllAutoDeltas(){
-        File base = new File(Directories.getProjectFolder() + "/");
+        File base = new File(Directories.getProjectFolder() + "/Files/");
         findDeltasRecursive(base);
     }
 
